@@ -36,11 +36,12 @@ def attack(target):
 
 
 if __name__ == "__main__":
+	interface = sys.argv[1]
 	os.system('ifconfig %s down' %interface)
 	os.system('iwconfig %s mode monitor' %interface)
 	os.system('ifconfig %s up' %interface)
 	print "ALFA (%s) is in Monitor Mode" %interface
-	for i in range(1,len(sys.argv)):
+	for i in range(2,len(sys.argv)):
 		threats.append(sys.argv[i])
         sniff(iface=interface, prn = packethandler, stop_filter = stopfilter)
 

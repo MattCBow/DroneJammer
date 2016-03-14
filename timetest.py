@@ -21,5 +21,5 @@ try:
 except:
    print "Error: unable to start thread"
 
-while finish!=0:
-   pass
+for i in range(1,100)
+	print "WE ARE HERE NOW"
